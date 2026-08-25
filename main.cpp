@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <string_view>
+#include <vector>
+#include <algorithm>
 
 class Stock
 {
@@ -12,6 +14,7 @@ public:
 	{}
 
 	void printInfo() const;
+	double getRatio() const { return m_peRatio; }
 
 private:
 	std::string m_name{};
@@ -30,10 +33,42 @@ void Stock::printInfo() const
 	std::cout << "Dividend: " << m_dividend << "%\n";
 	std::cout << "Revenue: " << m_revenue << " billion\n";
 	std::cout << "Debt: " << m_debt << " billion\n";
+	std::cout << '\n';
+}
+
+bool compare(Stock& x, Stock& y)
+{
+	return x.getRatio() < y.getRatio();
+}
+
+void printStockList(const std::vector<Stock>& stocks)
+{
+	for (const auto& i : stocks)
+	{
+		i.printInfo();
+	}
 }
 
 int main()
 {
-	Stock microsoft{"Microsoft", 487.31, 27.15, 0.75, 331.84, 40.3};
-	microsoft.printInfo();
+	std::vector<Stock> stocks{};
+	Stock Microsoft{"Microsoft", 487.31, 27.15, 0.75, 331.84, 31.07};
+	Stock Apple{"Apple", 310.34, 35.58, 0.35, 364.36, 84.34};
+	Stock Google{"Google", 344.59, 17.31, 0.26, 229.7, 98.165};
+	Stock Nvidia{"Nvidia", 208.48, 31.93, 0.48, 215.9, 11.41};
+	Stock AMD{ "AMD", 456.74, 117.20, 0, 21.889, 4.28 };
+
+	stocks.push_back(Microsoft);
+	stocks.push_back(Apple);
+	stocks.push_back(Google);
+	stocks.push_back(Nvidia);
+	stocks.push_back(AMD);
+
+	printStockList(stocks);
+	
+	std::vector<Stock> sortedStocks{stocks};
+	std::sort(sortedStocks.begin(), sortedStocks.end(), compare);
+
+	std::cout << "Ranking stocks by P/E Ratio\n";
+	printStockList(sortedStocks);
 }
