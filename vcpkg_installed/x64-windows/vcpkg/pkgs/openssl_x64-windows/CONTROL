@@ -1,0 +1,7 @@
+Package: openssl
+Version: 3.6.2
+Depends: vcpkg-cmake, vcpkg-cmake-config, vcpkg-cmake-get-vars
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 2e4cdb827fcee7059bbf01a98488523a82899c05cc4b4f12869fb0d802ba48f3
+Description: OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.

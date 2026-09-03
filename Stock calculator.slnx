@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Stock calculator.vcxproj" />
+  <Project Path="Stock calculator.vcxproj" Id="314a6de4-d245-4144-9586-3b47cea4c324" />
 </Solution>
